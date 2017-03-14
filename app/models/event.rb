@@ -3,12 +3,10 @@ class Event < ApplicationRecord
 
   validates :name, presence:true
   validates :description, presence:true, length: {maximum:500}
-  validates :starts_at, presence:true
-  validates :ends_at, presence:true
-
   validate :end_after_start
   validate :starts_after_today
-
+  validates :starts_at, presence:true
+  validates :ends_at, presence:true
 private
   def starts_after_today
       return if starts_at.blank?

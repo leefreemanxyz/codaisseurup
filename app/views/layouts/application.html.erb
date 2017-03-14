@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Codaisseurup</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>Codaisseurup</title>
+        <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <%= render 'layouts/shared/navbar' %>
-    <!--<p class="notice"><%= notice %></p>
+    <body>
+        <%= render 'layouts/shared/navbar' %>
+        <!--<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>-->
-    <%= yield %>
-  </body>
+        <div class="container">
+            <%= yield %>
+        </div>
+    </body>
 </html>

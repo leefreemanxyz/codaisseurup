@@ -1,0 +1,23 @@
+<h2>Your events</h2>
+<div class="row">
+    <% @events.each do |event| %>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4><%= event.name %></h4>
+            </div>
+            <div class="panel-body">
+              <p><%= event.location %></p>
+
+                <p><%= event.price %></p>
+            </div>
+            <div class="panel-footer">
+              <%=link_to "View", event, class:"btn btn-default"%>
+              <%= link_to "Update", edit_event_path(event), class: "btn btn-default" %>
+            </div>
+        </div>
+
+    </div>
+    <% end %>
+    <%= link_to "Add new event", new_event_path, class:"btn btn-success" %>
+</div>
