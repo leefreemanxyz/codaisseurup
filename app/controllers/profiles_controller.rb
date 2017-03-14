@@ -3,7 +3,11 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @profile = Profile.new
+    if current_user.has_profile?
+      redirect_to edit_profile_path(current_user), notice: "You already have a profile."
+    else
+      @profile = Profile.new
+    end
   end
 
   def create
