@@ -20,7 +20,10 @@
     </ul>
     <h4>Status</h4>
     <p><%= !@event.active ? ("<del>Unpublished</del>").html_safe : "Published" %></p>
-
+    <h4>Categories</h4>
+    <% @categories.each do |category| %>
+    <span class="label label-success"><%= category.name %></span>
+    <% end %>
   </div>
 </div>
 <%= link_to "Back", events_path, class: "btn btn-default" %>

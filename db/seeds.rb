@@ -1,5 +1,38 @@
-User.destroy_all
+Category.delete_all
+  Event.delete_all
+  User.delete_all
 
-miriam = User.create(email: "miriam@codaisseurup.com", password: "abcd1234")
+ miriam = User.create!(
+   email: "miriam@codaisseurup.com",
+   password: "abcd1234",
+ )
 
-event = Event.create({name:"Best party", description:"This is the party to end all parties", location:"World's smallest disco, TQ", price:15.0, capacity:20, includes_food:true, includes_drinks:true, starts_at:DateTime.new(2017,9,1,17), ends_at:DateTime.new(2017,9,1,19), active:true, user:miriam})
+ event = Event.create!(
+   name: "Monthly Yoga Weekend",
+   description: "Let's come together and practice some asanas together in the woods!",
+   location: "Amsterdam",
+   includes_food: false,
+   includes_drinks: true,
+   price: 10.00,
+   starts_at: 10.days.from_now,
+   ends_at: 12.days.from_now,
+   capacity: 100,
+   active: true,
+   user: miriam,
+ )
+
+ Category.create!([
+   { name: "Movements" },
+   { name: "Outdoors & Adventure" },
+   { name: "Tech" },
+   { name: "Family" },
+   { name: "Health & Wellness" },
+   { name: "Sports & Fitness" },
+   { name: "Learning" },
+   { name: "Photography" },
+   { name: "Food & Drink" },
+ ])
+
+ event = Event.find_by(name: "Monthly Yoga Weekend")
+ event.categories << Category.find_by(name: "Outdoors & Adventure")
+ event.categories << Category.find_by(name: "Sports & Fitness")
