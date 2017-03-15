@@ -9,7 +9,7 @@
     <h4>Main info</h4>
     <p>Location: <%= @event.location %></p>
     <p>Host: <%= @event.user.email %></p>
-    <p>Price: <%= @event.price %></p>
+    <p>Price: €<%= @event.price %></p>
     <p>Capacity: <%= @event.capacity %> <%= @event.capacity > 1 ? "guests" : "guest" %></p>
     <p>Date: <%= @event.starts_at %></p>
 

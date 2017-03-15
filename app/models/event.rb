@@ -8,6 +8,15 @@ class Event < ApplicationRecord
   validate :starts_after_today
   validates :starts_at, presence:true
   validates :ends_at, presence:true
+
+  def free?
+    price == 0
+  end
+
+  def self.order_by_price
+    order(:price)
+  end
+
 private
   def starts_after_today
       return if starts_at.blank?
