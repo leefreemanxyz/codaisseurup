@@ -1,0 +1,15 @@
+<div class="row">
+  <% @categories.each do |category| %>
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+          <h4><%= category.name %></h4>
+      </div>
+      <div class="panel-body">
+        <p><%= category.name %></p>
+        <%=link_to "View category", category_path(category), class:"btn btn-default"%>
+      </div>
+  </div>
+
+
+  <% end %>
+</div>
