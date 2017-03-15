@@ -6,6 +6,6 @@ describe "show a single event" do
     visit event_path(event)
     expect(page).to have_text("€#{event.price}")
     expect(page).to have_text("Capacity: #{event.capacity}")
-  
+
   end
 end
