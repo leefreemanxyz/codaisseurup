@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :event do
     name  "Best party in the world"
-    description {Faker::Lorem.sentece(40)}
+    description {Faker::Lorem.sentence(40)}
     location {Faker::Address.city}
     price {Faker::Commerce.price}
     capacity  10
