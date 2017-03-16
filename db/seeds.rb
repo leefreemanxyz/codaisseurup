@@ -4,7 +4,6 @@ Category.destroy_all
   Event.destroy_all
   User.destroy_all
 10.times do
-  FactoryGirl.create :user
   FactoryGirl.create :event
 end
 
@@ -23,5 +22,3 @@ end
    { name: "Photography" },
    { name: "Food & Drink" },
  ])
-
- 

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -35,6 +37,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use Devise for authentication
 gem 'devise', '~> 4.2'
+
+gem 'rails_12factor', group: :production
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
