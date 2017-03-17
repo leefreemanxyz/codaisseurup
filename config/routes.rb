@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/about' => "pages#about"
   devise_for :users
   resources :users, only: [:show]
-  resources :events
+  resources :events do
+    resources :registration, only: [:create] 
+  end
   resources :profiles, only: [:new, :edit, :create, :update]
   resources :photos
 end

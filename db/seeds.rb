@@ -1,4 +1,5 @@
 Photo.delete_all
+Registration.delete_all
 Category.delete_all
 Event.delete_all
 Profile.delete_all
@@ -82,3 +83,5 @@ User.delete_all
  event2.categories << Category.find_by(name: "Family")
  event3.categories << Category.find_by(name: "Learning")
  event3.categories << Category.find_by(name: "Family")
+
+Registration.create(user:miriam, event: event1, status:"Attending", price:20, guests_count:0)
