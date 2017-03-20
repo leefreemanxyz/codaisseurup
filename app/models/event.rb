@@ -20,6 +20,45 @@ class Event < ApplicationRecord
         order(:price)
     end
 
+    def self.alphabetical
+      order(name: :asc)
+    end
+
+    def self.published
+      where(active: true)
+    end
+
+
+    def self.during(starts_at,ends_at)
+      starts_before_and_ends_after(starts_at,ends_at)
+      .or(starts_during(starts_at, ends_at))
+      .or(ends_during(starts_at,ends_at))
+    end
+
+    def self.starts_before_and_ends_after(starts_at,ends_at)
+      where('starts_at < ? AND ends_at > ?', starts_at, ends_at)
+    end
+
+    def self.starts_during(starts_at,ends_at)
+      where('starts_at > ? AND starts_at < ?', starts_at, ends_at)
+    end
+
+    def self.ends_during(starts_at,ends_at)
+      where('ends_at > ? AND ends_at < ?', starts_at, ends_at)
+    end
+
+    def self.registered_during(starts_at, ends_at)
+      during(starts_at, ends_at).pluck(:event_id)
+    end
+
+    def self.order_by_date_created
+      order(created_at: :desc)
+    end
+
+    def self.earliest_registration_for_event
+      order(created_at: :desc).limit(1)
+    end
+
     private
 
     def starts_after_today

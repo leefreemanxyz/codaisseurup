@@ -70,4 +70,15 @@ RSpec.describe Event, type: :model do
         expect(event.guests).to include(guest_user)
       end
     end
+    describe "filters" do
+      let!(:event1) {create :event, name:"a", active:true}
+      let!(:event2) {create :event, name:"c", active:true}
+      let!(:event3) {create :event, name:"b", active:false}
+      it "returns events alphbetically" do
+        expect(Event.alphabetical).to eq([event1,event3,event2])
+      end
+      it "returns only published events" do
+        expect(Event.published).to contain_exactly(event1,event2)
+      end
+    end
 end

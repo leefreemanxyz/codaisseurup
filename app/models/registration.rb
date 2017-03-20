@@ -9,4 +9,16 @@ class Registration < ApplicationRecord
   def set_status
     self.status = "confirmed"
   end
+
+  def self.total_registrations
+    count
+  end
+
+  def self.total_registrations_by_status
+    group(:status).count
+  end
+
+  def self.amount_attending(event)
+    where('event.id == ?', event.id).count
+  end
 end
